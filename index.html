@@ -9,13 +9,13 @@
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a href="#home" class="brand">Rawane Cerbouche</a>
+  <header class="header">
+    <div class="container nav">
+      <a href="#home" class="logo">Rawane Cerbouche</a>
 
-      <nav class="nav">
-        <a href="#profil">Profil</a>
-        <a href="#formation">Formation</a>
+      <nav class="nav-links">
+        <a href="#about">Profil</a>
+        <a href="#education">Formation</a>
         <a href="#experience">Expérience</a>
         <a href="#projects">Projets</a>
         <a href="#skills">Compétences</a>
@@ -24,268 +24,256 @@
     </div>
   </header>
 
-  <main id="home" class="container layout">
+  <main id="home">
 
-    <!-- LEFT COLUMN -->
-    <aside class="sidebar">
-      <div class="profile-panel">
-        <div class="avatar">
-          <img src="rawane.jpeg" alt="Photo de Rawane Cerbouche">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-image-wrap">
+          <div class="hero-image-frame">
+            <img src="rawane.jpg" alt="Photo de Rawane Cerbouche">
+          </div>
         </div>
 
+        <p class="hero-kicker">Portfolio professionnel</p>
         <h1>Rawane Cerbouche</h1>
-        <p class="job-title">Data Science • Big Data • AI</p>
+        <p class="hero-role">Future State Engineer in Data Science, Big Data & AI</p>
 
-        <div class="line"></div>
-
-        <ul class="contact-list">
-          <li><span>Email</span><a href="mailto:cerboucherawane@gmail.com">cerboucherawane@gmail.com</a></li>
-          <li><span>Téléphone</span><a href="tel:+212603292780">+212 603292780</a></li>
-          <li><span>Ville</span><p>Agadir, Maroc</p></li>
-          <li><span>LinkedIn</span><a href="#">Ajouter ton lien</a></li>
-          <li><span>GitHub</span><a href="#">Ajouter ton lien</a></li>
-        </ul>
-
-        <div class="sidebar-actions">
-          <a class="btn btn-primary" href="RAWANE_CERBOUCHE_CV.pdf" download>Télécharger CV</a>
-          <a class="btn btn-secondary" href="#contact">Me contacter</a>
-        </div>
-      </div>
-
-      <div class="side-card">
-        <h3>Langues</h3>
-        <ul>
-          <li>Arabe — Langue maternelle</li>
-          <li>Français — Courant</li>
-          <li>Anglais — Courant</li>
-        </ul>
-      </div>
-
-      <div class="side-card">
-        <h3>Soft Skills</h3>
-        <ul>
-          <li>Analytical Thinking</li>
-          <li>Teamwork</li>
-          <li>Continuous Learning</li>
-          <li>Adaptabilité</li>
-        </ul>
-      </div>
-
-      <div class="side-card">
-        <h3>Centres d’intérêt</h3>
-        <ul>
-          <li>Programming</li>
-          <li>Swimming</li>
-          <li>Surfing</li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- RIGHT COLUMN -->
-    <section class="content">
-
-      <section class="hero-card">
-        <p class="hero-badge">Portfolio professionnel</p>
-        <h2>Future State Engineer in <span>Data Science, Big Data & AI</span></h2>
         <p class="hero-text">
-          Étudiante à l’ENSA Agadir, intéressée par l’analyse de données, les systèmes intelligents,
-          les bases de données et le développement de solutions robustes orientées décision.
-          Je recherche des opportunités pour appliquer mes compétences dans des projets concrets
-          à forte valeur analytique.
+          Étudiante à l’ENSA Agadir, passionnée par la Data Science, l’analyse de données,
+          les systèmes intelligents et le développement de solutions technologiques
+          robustes et utiles à la prise de décision.
         </p>
-      </section>
 
-      <section id="profil" class="section-block">
-        <div class="section-heading">
-          <p class="section-number">01</p>
-          <h3>Profil</h3>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Voir mes projets</a>
+          <a class="btn btn-secondary" href="RAWANE_CERBOUCHE_CV.pdf" download>Télécharger CV</a>
         </div>
 
-        <div class="panel">
+        <div class="hero-contact">
+          <a href="mailto:cerboucherawane@gmail.com">cerboucherawane@gmail.com</a>
+          <span>•</span>
+          <a href="tel:+212603292780">+212 603292780</a>
+          <span>•</span>
+          <a href="#">LinkedIn</a>
+          <span>•</span>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container narrow">
+        <div class="section-heading center">
+          <span>01</span>
+          <h2>Profil</h2>
+        </div>
+
+        <div class="card centered-card">
           <p>
             Future State Engineer in Data Science, Big Data and AI à l’ENSA Agadir,
-            passionnée par la programmation, l’analyse de données et l’optimisation des systèmes.
-            J’ai développé une base solide en algorithmique, bases de données, statistiques
-            et développement logiciel, avec un intérêt particulier pour les projets data-driven.
+            avec un fort intérêt pour l’analyse de données, l’algorithmique,
+            les bases de données et la conception de solutions innovantes.
+          </p>
+          <p>
+            Mon objectif est de contribuer à des projets où la technologie,
+            la rigueur analytique et la créativité permettent de produire
+            un impact concret et mesurable.
           </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="formation" class="section-block">
-        <div class="section-heading">
-          <p class="section-number">02</p>
-          <h3>Formation</h3>
+    <!-- EDUCATION -->
+    <section class="section alt-section" id="education">
+      <div class="container">
+        <div class="section-heading center">
+          <span>02</span>
+          <h2>Formation</h2>
         </div>
 
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="panel">
-              <h4>ENSA Agadir</h4>
-              <p class="meta">2024 – 2025</p>
-              <p>First Year of Engineering Cycle — Data Science, Big Data and AI</p>
-            </div>
+        <div class="grid-3">
+          <article class="card info-card text-center">
+            <p class="card-date">2024 – 2025</p>
+            <h3>ENSA Agadir</h3>
+            <p>First Year of Engineering Cycle</p>
+            <p>Data Science, Big Data & AI</p>
           </article>
 
-          <article class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="panel">
-              <h4>ENSA Agadir</h4>
-              <p class="meta">2022 – 2024</p>
-              <p>Preparatory Classes</p>
-            </div>
+          <article class="card info-card text-center">
+            <p class="card-date">2022 – 2024</p>
+            <h3>ENSA Agadir</h3>
+            <p>Preparatory Classes</p>
           </article>
 
-          <article class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="panel">
-              <h4>Lycée Mohammed Al Beqqali</h4>
-              <p class="meta">2020 – 2021</p>
-              <p>High School Diploma in Physical Sciences — French Option</p>
-            </div>
+          <article class="card info-card text-center">
+            <p class="card-date">2020 – 2021</p>
+            <h3>Lycée Mohammed Al Beqqali</h3>
+            <p>High School Diploma in Physical Sciences</p>
+            <p>French Option</p>
           </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="experience" class="section-block">
-        <div class="section-heading">
-          <p class="section-number">03</p>
-          <h3>Expérience</h3>
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="container narrow">
+        <div class="section-heading center">
+          <span>03</span>
+          <h2>Expérience</h2>
         </div>
 
-        <div class="panel experience-panel">
-          <div class="experience-header">
-            <div>
-              <h4>Financial Manager — YES / INJAZ Almaghrib</h4>
-              <p class="meta">Janvier 2024 – Juin 2024</p>
-            </div>
-          </div>
-
-          <ul class="detail-list">
-            <li>Gestion et suivi des données financières et des transactions.</li>
-            <li>Contribution à l’amélioration de la rentabilité à travers l’analyse des flux financiers.</li>
-            <li>Production de rapports structurés pour appuyer la prise de décision.</li>
-          </ul>
+        <div class="card centered-card">
+          <p class="card-date">Janvier 2024 – Juin 2024</p>
+          <h3>Financial Manager — YES / INJAZ Almaghrib</h3>
+          <p>
+            Expérience orientée gestion, suivi et analyse de données financières,
+            avec production de rapports structurés pour soutenir la prise de décision
+            et contribuer à l’amélioration de la rentabilité.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="projects" class="section-block">
-        <div class="section-heading">
-          <p class="section-number">04</p>
-          <h3>Projets</h3>
+    <!-- PROJECTS -->
+    <section class="section alt-section" id="projects">
+      <div class="container">
+        <div class="section-heading center">
+          <span>04</span>
+          <h2>Projets</h2>
         </div>
 
-        <div class="project-stack">
-          <article class="panel project-panel">
-            <div class="project-top">
-              <div>
-                <h4>Fuel Card System</h4>
-                <p class="meta">Janvier 2025 – Présent</p>
-              </div>
-              <span class="project-tag">Projet principal</span>
-            </div>
-
+        <div class="projects-grid">
+          <article class="card project-card">
+            <p class="project-badge">Projet principal</p>
+            <h3>Fuel Card System</h3>
+            <p class="card-date">Janvier 2025 – Présent</p>
             <p>
               Développement d’un système de gestion des transactions carburant
-              avec une architecture moderne pensée pour la fiabilité, la sécurité
-              et l’exploitation structurée des données.
+              structuré autour d’une architecture moderne et sécurisée.
             </p>
-
-            <ul class="detail-list">
-              <li>Modélisation NoSQL avec MongoDB.</li>
-              <li>Développement d’APIs Java pour le traitement des données.</li>
-              <li>Intégration de concepts Blockchain pour la traçabilité des opérations.</li>
+            <ul>
+              <li>Conception de bases NoSQL avec MongoDB</li>
+              <li>Développement d’APIs Java</li>
+              <li>Intégration de concepts Blockchain</li>
             </ul>
           </article>
 
-          <article class="panel project-panel">
-            <div class="project-top">
-              <div>
-                <h4>Winning Product Detection via TikTok Scraping</h4>
-                <p class="meta">Projet personnel</p>
-              </div>
-              <span class="project-tag subtle">Python</span>
-            </div>
-
+          <article class="card project-card">
+            <p class="project-badge subtle">Projet personnel</p>
+            <h3>Winning Product Detection via TikTok Scraping</h3>
+            <p class="card-date">Python • Selenium • CSV</p>
             <p>
-              Mise en place d’un scraper automatisé pour détecter des tendances produits
-              à partir de TikTok, combiné à une logique d’analyse exploitable pour des cas e-commerce.
+              Mise en place d’un scraper automatisé pour collecter des données
+              TikTok et détecter des tendances exploitables pour l’analyse.
             </p>
-
-            <ul class="detail-list">
-              <li>Collecte automatisée avec Python et Selenium.</li>
-              <li>Analyse de tendances via Google Trends API.</li>
-              <li>Export structuré en CSV pour traitement analytique.</li>
+            <ul>
+              <li>Collecte automatisée avec Python et Selenium</li>
+              <li>Analyse via Google Trends API</li>
+              <li>Export structuré pour traitement data</li>
             </ul>
           </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="skills" class="section-block">
-        <div class="section-heading">
-          <p class="section-number">05</p>
-          <h3>Compétences</h3>
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading center">
+          <span>05</span>
+          <h2>Compétences</h2>
         </div>
 
         <div class="skills-grid">
-          <div class="panel skill-panel">
-            <h4>Langages</h4>
+          <article class="card skill-card text-center">
+            <h3>Langages</h3>
             <p>C, Python, Java, JavaScript, R, LaTeX</p>
-          </div>
+          </article>
 
-          <div class="panel skill-panel">
-            <h4>Web</h4>
+          <article class="card skill-card text-center">
+            <h3>Web</h3>
             <p>HTML, CSS, PHP</p>
-          </div>
+          </article>
 
-          <div class="panel skill-panel">
-            <h4>Bases de données</h4>
+          <article class="card skill-card text-center">
+            <h3>Bases de données</h3>
             <p>MongoDB, MySQL</p>
-          </div>
+          </article>
 
-          <div class="panel skill-panel">
-            <h4>Systèmes</h4>
+          <article class="card skill-card text-center">
+            <h3>Systèmes</h3>
             <p>Linux, Shell Programming</p>
-          </div>
+          </article>
 
-          <div class="panel skill-panel">
-            <h4>Algorithmique</h4>
+          <article class="card skill-card text-center">
+            <h3>Algorithmique</h3>
             <p>Problem Solving, Structures de données, OOP Java</p>
-          </div>
+          </article>
 
-          <div class="panel skill-panel">
-            <h4>Mathématiques</h4>
-            <p>Statistiques descriptives, inférentielles, optimisation linéaire et non linéaire</p>
-          </div>
+          <article class="card skill-card text-center">
+            <h3>Mathématiques</h3>
+            <p>Statistiques descriptives, inférentielles, optimisation</p>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="contact" class="section-block">
-        <div class="section-heading">
-          <p class="section-number">06</p>
-          <h3>Contact</h3>
+    <!-- EXTRA -->
+    <section class="section alt-section" id="more">
+      <div class="container">
+        <div class="section-heading center">
+          <span>06</span>
+          <h2>Langues & Soft Skills</h2>
         </div>
 
-        <div class="panel contact-panel">
-          <div>
-            <h4>Disponible pour stage et opportunités</h4>
-            <p>
-              Je recherche des opportunités dans les domaines de la Data Science,
-              du Big Data et de l’Intelligence Artificielle pour développer davantage
-              mes compétences dans un environnement professionnel stimulant.
-            </p>
-          </div>
+        <div class="grid-2">
+          <article class="card text-center">
+            <h3>Langues</h3>
+            <p>Arabe — Langue maternelle</p>
+            <p>Français — Courant</p>
+            <p>Anglais — Courant</p>
+          </article>
 
-          <div class="contact-box">
+          <article class="card text-center">
+            <h3>Soft Skills</h3>
+            <p>Analytical Thinking</p>
+            <p>Teamwork</p>
+            <p>Continuous Learning</p>
+            <p>Adaptabilité</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container narrow">
+        <div class="section-heading center">
+          <span>07</span>
+          <h2>Contact</h2>
+        </div>
+
+        <div class="card contact-card text-center">
+          <h3>Disponible pour stage et opportunités</h3>
+          <p>
+            Je recherche des opportunités dans les domaines de la Data Science,
+            du Big Data et de l’Intelligence Artificielle afin de développer
+            mes compétences dans un environnement professionnel stimulant.
+          </p>
+
+          <div class="contact-links">
             <a href="mailto:cerboucherawane@gmail.com">cerboucherawane@gmail.com</a>
             <a href="tel:+212603292780">+212 603292780</a>
             <a href="#">LinkedIn</a>
             <a href="#">GitHub</a>
           </div>
         </div>
-      </section>
-
+      </div>
     </section>
+
   </main>
 </body>
 </html>
