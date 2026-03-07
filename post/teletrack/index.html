@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeleTrack — Application web de gestion du télétravail</title>
+  <meta
+    name="description"
+    content="Projet de stage TeleTrack : application web de gestion du télétravail développée avec Spring Boot, JavaScript, HTML, CSS et H2 Database."
+  />
+  <link rel="stylesheet" href="../../style.css" />
+
+  <style>
+    .project-page{
+      padding-top: 24px;
+      padding-bottom: 60px;
+    }
+
+    .project-shell{
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .project-hero{
+      text-align: center;
+      padding: 28px 0 36px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 34px;
+    }
+
+    .project-meta{
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .project-hero h1{
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      margin-bottom: 10px;
+      letter-spacing: -.03em;
+    }
+
+    .project-subtitle{
+      color: var(--accent-strong);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .project-team{
+      color: var(--muted);
+      font-size: .96rem;
+      margin-bottom: 18px;
+    }
+
+    .project-tags{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .project-tag-chip{
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: var(--accent-strong);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .project-intro{
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.9;
+    }
+
+    .project-layout{
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .project-toc{
+      position: sticky;
+      top: 110px;
+      padding-right: 10px;
+    }
+
+    .project-toc h3{
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .project-toc-list{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 1px solid var(--line);
+      padding-left: 14px;
+    }
+
+    .project-toc-list a{
+      color: var(--muted);
+      font-size: .95rem;
+      transition: .2s ease;
+    }
+
+    .project-toc-list a:hover{
+      color: var(--text);
+      transform: translateX(3px);
+    }
+
+    .project-content{
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .content-block{
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .content-block:last-child{
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .content-block h2{
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      letter-spacing: -.02em;
+    }
+
+    .content-block h4{
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .content-block p{
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+
+    .content-block ul{
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .content-block li + li{
+      margin-top: 8px;
+    }
+
+    .project-simple-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .project-simple-grid-3{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .project-note{
+      padding: 14px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,.025);
+      border-radius: 0 14px 14px 0;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .project-image-full{
+      margin-top: 18px;
+    }
+
+    .project-image-full img{
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .screens-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .screen-item{
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+
+    .screen-item img{
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .screen-caption{
+      padding: 14px 16px 16px;
+    }
+
+    .screen-caption h4{
+      margin-bottom: 6px;
+    }
+
+    .screen-caption p{
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .quick-links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .tech-list{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tech-list span{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: .9rem;
+    }
+
+    .footer.project-footer{
+      margin-top: 40px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    @media (max-width: 980px){
+      .project-layout{
+        grid-template-columns: 1fr;
+      }
+
+      .project-toc{
+        position: relative;
+        top: auto;
+        padding-right: 0;
+      }
+
+      .project-toc-list{
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .project-simple-grid,
+      .project-simple-grid-3,
+      .screens-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="../../index.html#projects">← Retour</a>
+
+      <nav class="nav-links">
+        <a href="../../index.html#home">Accueil</a>
+        <a href="../../index.html#about">Profil</a>
+        <a href="../../index.html#projects" class="active">Projets</a>
+        <a href="../../index.html#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="../../rawane.pdf" download>Télécharger CV</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container project-page">
+    <div class="project-shell">
+
+      <!-- HERO -->
+      <section class="project-hero">
+        <p class="project-meta">Projet de stage</p>
+        <h1>TeleTrack</h1>
+        <p class="project-subtitle">Application web de gestion du télétravail</p>
+        <p class="project-team">Projet réalisé dans le cadre d’un stage chez <strong>PORTNET S.A.</strong></p>
+
+        <div class="project-tags">
+          <span class="project-tag-chip">Java</span>
+          <span class="project-tag-chip">Spring Boot</span>
+          <span class="project-tag-chip">HTML5</span>
+          <span class="project-tag-chip">CSS3</span>
+          <span class="project-tag-chip">JavaScript</span>
+          <span class="project-tag-chip">Tailwind CSS</span>
+          <span class="project-tag-chip">H2 Database</span>
+          <span class="project-tag-chip">API REST</span>
+        </div>
+
+        <p class="project-intro">
+          TeleTrack est une application web conçue pour simplifier la gestion des demandes de télétravail
+          au sein de l’entreprise. Le projet permet aux employés de soumettre, consulter et suivre leurs
+          demandes, tandis que les gestionnaires disposent d’un espace de pilotage pour approuver,
+          rejeter ou laisser en attente les demandes, gérer les employés et visualiser les informations
+          dans une interface claire et structurée.
+        </p>
+      </section>
+
+      <div class="project-layout">
+
+        <!-- TABLE DES MATIÈRES -->
+        <aside class="project-toc">
+          <h3>Sommaire</h3>
+          <nav class="project-toc-list">
+            <a href="#overview">01. Vue d’ensemble</a>
+            <a href="#company">02. Contexte entreprise</a>
+            <a href="#objectifs">03. Objectifs</a>
+            <a href="#features">04. Fonctionnalités</a>
+            <a href="#actors">05. Acteurs & rôles</a>
+            <a href="#architecture">06. Architecture & stack</a>
+            <a href="#methodology">07. Méthodologie</a>
+            <a href="#workflow">08. Workflow applicatif</a>
+            <a href="#interfaces">09. Interfaces</a>
+            <a href="#tests">10. Tests & validation</a>
+            <a href="#portfolio-plus">11. Valeur ajoutée</a>
+          </nav>
+        </aside>
+
+        <!-- CONTENU -->
+        <div class="project-content">
+
+          <section id="overview" class="content-block">
+            <h2>Vue d’ensemble</h2>
+            <p>
+              Le projet répond à un besoin concret de digitalisation interne : centraliser la gestion
+              des demandes de télétravail dans une plateforme unique, sécurisée et simple d’utilisation.
+              L’application prend en charge l’authentification, la gestion des rôles, l’ajout et le suivi
+              des demandes, ainsi que l’administration des employés.
+            </p>
+
+            <div class="project-note">
+              <strong>Positionnement du projet :</strong> application web de gestion RH légère,
+              avec logique métier claire, séparation frontend/backend et architecture orientée API REST.
+            </div>
+          </section>
+
+          <section id="company" class="content-block">
+            <h2>Contexte entreprise</h2>
+            <p>
+              Ce projet a été réalisé dans le cadre d’un stage au sein de <strong>PORTNET S.A.</strong>,
+              entreprise spécialisée dans la digitalisation des procédures du commerce extérieur au Maroc.
+              Le projet s’inscrit dans une logique de transformation numérique des processus internes,
+              notamment autour de l’organisation du travail hybride et du télétravail.
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Entreprise d’accueil</h4>
+                <ul>
+                  <li>PORTNET S.A.</li>
+                  <li>Société Anonyme</li>
+                  <li>Création : 2012</li>
+                  <li>Mission : digitalisation des procédures du commerce extérieur</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Cadre du projet</h4>
+                <ul>
+                  <li>Projet de stage d’été</li>
+                  <li>Encadrement entreprise et ENSA</li>
+                  <li>Développement d’une solution interne</li>
+                  <li>Orientation organisationnelle et RH</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="objectifs" class="content-block">
+            <h2>Objectifs du projet</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Objectifs fonctionnels</h4>
+                <ul>
+                  <li>Faciliter la soumission et le suivi des demandes de télétravail</li>
+                  <li>Permettre la validation ou le rejet des demandes par les managers</li>
+                  <li>Centraliser les informations dans une interface ergonomique</li>
+                  <li>Offrir une visualisation claire des statuts et plannings</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Objectifs techniques</h4>
+                <ul>
+                  <li>Mettre en place une architecture web moderne et claire</li>
+                  <li>Assurer la sécurité via authentification et gestion des rôles</li>
+                  <li>Garantir la cohérence des données dans la base H2</li>
+                  <li>Préparer une base évolutive pour des améliorations futures</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="features" class="content-block">
+            <h2>Fonctionnalités principales</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Côté employé</h4>
+                <ul>
+                  <li>Se connecter à l’application</li>
+                  <li>Créer une demande de télétravail</li>
+                  <li>Consulter ses demandes précédentes</li>
+                  <li>Suivre le statut : Pending, Approved, Rejected</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Côté manager</h4>
+                <ul>
+                  <li>Consulter toutes les demandes</li>
+                  <li>Valider, rejeter ou laisser en attente</li>
+                  <li>Ajouter et gérer les employés</li>
+                  <li>Superviser les demandes dans un dashboard</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="project-note">
+              L’application inclut aussi l’importation des employés via CSV, une visualisation
+              structurée des demandes et un fonctionnement orienté rôles pour séparer les droits d’accès.
+            </div>
+          </section>
+
+          <section id="actors" class="content-block">
+            <h2>Acteurs & rôles</h2>
+            <p>
+              Le système repose sur deux profils principaux.
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Employé</h4>
+                <ul>
+                  <li>Soumission des demandes</li>
+                  <li>Consultation de l’historique</li>
+                  <li>Suivi du statut de ses demandes</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Manager / Webmaster</h4>
+                <ul>
+                  <li>Validation ou rejet des demandes</li>
+                  <li>Gestion des comptes employés</li>
+                  <li>Suivi global des opérations</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="architecture" class="content-block">
+            <h2>Architecture & stack technique</h2>
+
+            <p>
+              TeleTrack adopte une architecture web séparant clairement la partie interface,
+              la logique métier et la couche de persistance.
+            </p>
+
+            <div class="tech-list">
+              <span>Frontend : HTML5</span>
+              <span>CSS3</span>
+              <span>Tailwind CSS</span>
+              <span>JavaScript</span>
+              <span>Backend : Java</span>
+              <span>Spring Boot</span>
+              <span>API REST</span>
+              <span>Spring Data JPA</span>
+              <span>H2 Database</span>
+              <span>Apache Tomcat</span>
+              <span>IntelliJ IDEA</span>
+              <span>VS Code</span>
+            </div>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Frontend</h4>
+                <p>
+                  HTML, CSS et JavaScript ont été utilisés pour construire une interface claire,
+                  responsive et simple d’utilisation, avec communication asynchrone via Fetch API / AJAX.
+                </p>
+              </div>
+
+              <div>
+                <h4>Backend</h4>
+                <p>
+                  Spring Boot a permis d’implémenter la logique métier, la gestion des rôles,
+                  l’authentification et les endpoints REST reliés à la base H2 via JPA.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="methodology" class="content-block">
+            <h2>Méthodologie de travail</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Démarche suivie</h4>
+                <ul>
+                  <li>Analyse du cahier des charges</li>
+                  <li>Identification des besoins fonctionnels et non fonctionnels</li>
+                  <li>Modélisation UML</li>
+                  <li>Développement progressif backend puis frontend</li>
+                  <li>Tests et validation des cas d’usage</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Planification</h4>
+                <ul>
+                  <li>Semaine 1–2 : analyse & conception</li>
+                  <li>Semaine 3–4 : backend Spring Boot + H2</li>
+                  <li>Semaine 5–6 : frontend & interfaces</li>
+                  <li>Semaine 7 : rôles & calendrier interactif</li>
+                  <li>Semaine 8 : tests & documentation</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="project-note">
+              La gestion du projet s’est appuyée sur une logique en cascade, avec validation de chaque phase avant le passage à la suivante.
+            </div>
+          </section>
+
+          <section id="workflow" class="content-block">
+            <h2>Workflow applicatif</h2>
+            <p>
+              Le fonctionnement de TeleTrack suit un cycle simple, compréhensible et directement lié
+              à l’usage métier :
+            </p>
+
+            <ul>
+              <li>L’utilisateur s’authentifie selon son rôle</li>
+              <li>L’employé crée une demande de télétravail</li>
+              <li>La demande est enregistrée en base avec le statut <strong>Pending</strong></li>
+              <li>Le manager consulte la demande dans son dashboard</li>
+              <li>Le manager approuve ou rejette la demande</li>
+              <li>Le statut mis à jour est renvoyé et visible côté employé</li>
+            </ul>
+
+            <div class="project-note">
+              Ce workflow met en valeur une logique métier complète : saisie, persistance,
+              supervision, décision et mise à jour en temps réel.
+            </div>
+          </section>
+
+          <section id="interfaces" class="content-block">
+            <h2>Interfaces principales</h2>
+            <p>
+              L’interface a été pensée pour rester simple, claire et adaptée aux deux profils utilisateurs.
+            </p>
+
+            <div class="screens-grid">
+              <div class="screen-item">
+                <img src="teletrack-login.png" alt="Interface de connexion TeleTrack">
+                <div class="screen-caption">
+                  <h4>Login</h4>
+                  <p>Connexion sécurisée avec identifiant et mot de passe.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="teletrack-employee-dashboard.png" alt="Menu principal employé">
+                <div class="screen-caption">
+                  <h4>Espace employé</h4>
+                  <p>Consultation des demandes et suivi par statut.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="teletrack-request-form.png" alt="Formulaire de demande de télétravail">
+                <div class="screen-caption">
+                  <h4>Formulaire de demande</h4>
+                  <p>Création d’une nouvelle demande avec date, période et motif.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="teletrack-manager-dashboard.png" alt="Dashboard manager TeleTrack">
+                <div class="screen-caption">
+                  <h4>Dashboard manager</h4>
+                  <p>Vue globale des demandes et pilotage opérationnel.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="teletrack-add-employee.png" alt="Formulaire d’ajout d’employé">
+                <div class="screen-caption">
+                  <h4>Ajout d’employé</h4>
+                  <p>Gestion administrative centralisée via formulaire dédié.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="teletrack-requests.png" alt="Interface de traitement des demandes">
+                <div class="screen-caption">
+                  <h4>Traitement des demandes</h4>
+                  <p>Validation, rejet ou maintien en attente par le manager.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="teletrack-employees.png" alt="Liste des employés">
+                <div class="screen-caption">
+                  <h4>Liste des employés</h4>
+                  <p>Consultation structurée des informations collaborateurs.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="teletrack-h2-console.png" alt="Vérification H2 Console">
+                <div class="screen-caption">
+                  <h4>Persistance en base</h4>
+                  <p>Contrôle de la cohérence des données via H2 Console.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="tests" class="content-block">
+            <h2>Tests & validation</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Tests réalisés</h4>
+                <ul>
+                  <li>Validation sans saisie</li>
+                  <li>Mot de passe manquant</li>
+                  <li>Identifiants incorrects</li>
+                  <li>Création de demande côté employé</li>
+                  <li>Changement de statut côté manager</li>
+                  <li>Ajout d’employé</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Résultats observés</h4>
+                <ul>
+                  <li>Détection correcte des erreurs de connexion</li>
+                  <li>Redirection selon le rôle utilisateur</li>
+                  <li>Enregistrement correct des demandes</li>
+                  <li>Mise à jour cohérente des statuts</li>
+                  <li>Synchronisation interface / base de données</li>
+                  <li>Validation visuelle via H2 Console</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="portfolio-plus" class="content-block">
+            <h2>Ce que ce projet apporte à mon portfolio</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Compétences démontrées</h4>
+                <ul>
+                  <li>Analyse des besoins métier</li>
+                  <li>Conception d’une application full stack</li>
+                  <li>Développement backend en Java / Spring Boot</li>
+                  <li>Création d’interfaces web structurées</li>
+                  <li>Gestion de base de données H2</li>
+                  <li>Tests manuels et validation fonctionnelle</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Valeur professionnelle</h4>
+                <ul>
+                  <li>Projet concret réalisé en contexte entreprise</li>
+                  <li>Cas d’usage RH réaliste et utile</li>
+                  <li>Architecture claire et extensible</li>
+                  <li>Bonne illustration de la logique métier</li>
+                  <li>Preuve d’autonomie, rigueur et structuration</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="quick-links">
+              <a class="btn btn-primary" href="../../index.html#projects">Retour aux projets</a>
+              <a class="btn btn-secondary" href="../../index.html#contact">Me contacter</a>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <footer class="footer project-footer">© 2026 — Rawane Cerbouche</footer>
+    </div>
+  </main>
+</body>
+</html>
