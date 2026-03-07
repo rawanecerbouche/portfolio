@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Système de microfinance — Oracle Database & Laravel</title>
+  <meta
+    name="description"
+    content="Projet académique d’administration des bases de données Oracle : conception et implémentation d’un système de microfinance sécurisé avec Oracle Database, PL/SQL et Laravel."
+  />
+  <link rel="stylesheet" href="../../style.css" />
+
+  <style>
+    .project-page{
+      padding-top: 24px;
+      padding-bottom: 60px;
+    }
+
+    .project-shell{
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .project-hero{
+      text-align: center;
+      padding: 28px 0 36px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 34px;
+    }
+
+    .project-meta{
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .project-hero h1{
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      margin-bottom: 10px;
+      letter-spacing: -.03em;
+    }
+
+    .project-subtitle{
+      color: var(--accent-strong);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .project-team{
+      color: var(--muted);
+      font-size: .96rem;
+      margin-bottom: 18px;
+    }
+
+    .project-tags{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .project-tag-chip{
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: var(--accent-strong);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .project-intro{
+      max-width: 920px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.9;
+    }
+
+    .project-layout{
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .project-toc{
+      position: sticky;
+      top: 110px;
+      padding-right: 10px;
+    }
+
+    .project-toc h3{
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .project-toc-list{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 1px solid var(--line);
+      padding-left: 14px;
+    }
+
+    .project-toc-list a{
+      color: var(--muted);
+      font-size: .95rem;
+      transition: .2s ease;
+    }
+
+    .project-toc-list a:hover{
+      color: var(--text);
+      transform: translateX(3px);
+    }
+
+    .project-content{
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .content-block{
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .content-block:last-child{
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .content-block h2{
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      letter-spacing: -.02em;
+    }
+
+    .content-block h4{
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .content-block p{
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+
+    .content-block ul{
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .content-block li + li{
+      margin-top: 8px;
+    }
+
+    .project-simple-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .project-simple-grid-3{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .project-note{
+      padding: 14px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,.025);
+      border-radius: 0 14px 14px 0;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .screens-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .screen-item{
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+
+    .screen-item button{
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: transparent;
+      cursor: zoom-in;
+      text-align: left;
+    }
+
+    .screen-item img{
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .screen-item button:hover img{
+      transform: scale(1.02);
+      opacity: .95;
+    }
+
+    .screen-caption{
+      padding: 14px 16px 16px;
+    }
+
+    .screen-caption h4{
+      margin-bottom: 6px;
+    }
+
+    .screen-caption p{
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .quick-links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .tech-list{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tech-list span{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: .9rem;
+    }
+
+    .footer.project-footer{
+      margin-top: 40px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    .image-popup{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.86);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 24px;
+    }
+
+    .image-popup.is-open{
+      display: flex;
+    }
+
+    .image-popup-content{
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-popup img{
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .close-btn{
+      position: absolute;
+      top: -14px;
+      right: -4px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10, 20, 34, .8);
+      color: white;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .close-btn:hover{
+      background: rgba(20, 30, 44, .95);
+    }
+
+    @media (max-width: 980px){
+      .project-layout{
+        grid-template-columns: 1fr;
+      }
+
+      .project-toc{
+        position: relative;
+        top: auto;
+        padding-right: 0;
+      }
+
+      .project-toc-list{
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .project-simple-grid,
+      .project-simple-grid-3,
+      .screens-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="../../index.html#projects">← Retour</a>
+
+      <nav class="nav-links">
+        <a href="../../index.html#home">Accueil</a>
+        <a href="../../index.html#about">Profil</a>
+        <a href="../../index.html#projects" class="active">Projets</a>
+        <a href="../../index.html#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="../../rawane.pdf" download>Télécharger CV</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container project-page">
+    <div class="project-shell">
+
+      <section class="project-hero">
+        <p class="project-meta">Projet académique</p>
+        <h1>Système de microfinance</h1>
+        <p class="project-subtitle">Administration Oracle Database & interface Laravel</p>
+        <p class="project-team">
+          Projet réalisé en équipe avec Farah Elmourabite, Rawane Cerbouche, Hamza Agoujil et Mohamed Afkir,
+          encadré par Pr. Jaafar Idrais. :contentReference[oaicite:8]{index=8}
+        </p>
+
+        <div class="project-tags">
+          <span class="project-tag-chip">Oracle Database</span>
+          <span class="project-tag-chip">Oracle SQL Developer</span>
+          <span class="project-tag-chip">PL/SQL</span>
+          <span class="project-tag-chip">Laravel</span>
+          <span class="project-tag-chip">PHP</span>
+          <span class="project-tag-chip">MVC</span>
+          <span class="project-tag-chip">Sécurité</span>
+          <span class="project-tag-chip">Contrôle d’accès</span>
+        </div>
+
+        <p class="project-intro">
+          Ce projet a pour objectif de concevoir et d’implémenter un système de gestion de microfinance
+          sécurisé et cohérent, basé sur <strong>Oracle Database</strong> pour la couche données
+          et <strong>Laravel</strong> pour la couche applicative. Le système couvre la gestion des clients,
+          agents, prêts, échéances et remboursements, tout en intégrant des mécanismes de
+          sécurité, de gestion des rôles, d’automatisation PL/SQL et de contrôle d’accès. 
+        </p>
+      </section>
+
+      <div class="project-layout">
+        <aside class="project-toc">
+          <h3>Sommaire</h3>
+          <nav class="project-toc-list">
+            <a href="#overview">01. Vue d’ensemble</a>
+            <a href="#domain">02. Domaine d’application</a>
+            <a href="#objectifs">03. Objectifs & besoins</a>
+            <a href="#oracle">04. Pourquoi Oracle ?</a>
+            <a href="#security">05. Utilisateurs, rôles & privilèges</a>
+            <a href="#plsql">06. Programmation PL/SQL</a>
+            <a href="#laravel">07. Backend & Frontend Laravel</a>
+            <a href="#schema">08. Structure des données</a>
+            <a href="#interfaces">09. Figures & interfaces</a>
+            <a href="#teamwork">10. Travail d’équipe</a>
+            <a href="#portfolio-plus">11. Valeur ajoutée</a>
+          </nav>
+        </aside>
+
+        <div class="project-content">
+
+          <section id="overview" class="content-block">
+            <h2>Vue d’ensemble</h2>
+            <p>
+              Le projet s’inscrit dans le cadre du module <strong>Administration des Bases de Données Oracle</strong>
+              et applique les concepts étudiés à un cas réel : la gestion d’un système de microfinance. :contentReference[oaicite:10]{index=10}
+            </p>
+            <p>
+              L’enjeu principal est de construire une base de données robuste, fiable et sécurisée,
+              tout en y connectant une interface web permettant d’interagir avec les données dans un cadre
+              proche d’un système utilisé en entreprise. :contentReference[oaicite:11]{index=11}
+            </p>
+
+            <div class="project-note">
+              <strong>Positionnement du projet :</strong> projet orienté administration de base de données,
+              sécurité, PL/SQL et intégration applicative avec Laravel.
+            </div>
+          </section>
+
+          <section id="domain" class="content-block">
+            <h2>Domaine d’application</h2>
+            <p>
+              Le domaine de la microfinance a été choisi en raison de la complexité de ses données
+              et de la sensibilité des informations manipulées. Le système doit gérer des entités liées
+              aux clients, agents, prêts, échéances et remboursements, dans un contexte où la cohérence
+              et la confidentialité sont essentielles. :contentReference[oaicite:12]{index=12}
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Pourquoi la microfinance ?</h4>
+                <ul>
+                  <li>Cas réel avec données interconnectées</li>
+                  <li>Informations sensibles et critiques</li>
+                  <li>Besoin fort de sécurité et de traçabilité</li>
+                  <li>Bon terrain d’application pour Oracle et PL/SQL</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Entités métier principales</h4>
+                <ul>
+                  <li>Clients</li>
+                  <li>Agents</li>
+                  <li>Prêts</li>
+                  <li>Échéances</li>
+                  <li>Remboursements</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="objectifs" class="content-block">
+            <h2>Objectifs & besoins fonctionnels</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Besoins fonctionnels</h4>
+                <ul>
+                  <li>Créer, consulter, modifier et suivre les clients et agents</li>
+                  <li>Gérer le cycle de vie complet des prêts</li>
+                  <li>Calculer montants, intérêts, durées et échéances</li>
+                  <li>Suivre les remboursements et détecter les retards</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Objectifs techniques</h4>
+                <ul>
+                  <li>Garantir cohérence, intégrité et sécurité des données</li>
+                  <li>Limiter les accès selon les profils utilisateurs</li>
+                  <li>Automatiser les règles métier avec PL/SQL</li>
+                  <li>Connecter une interface Laravel à Oracle Database</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="project-note">
+              Le rapport insiste sur la sécurisation des données, la limitation des accès et
+              l’automatisation des traitements comme problématique centrale du projet. :contentReference[oaicite:13]{index=13}
+            </div>
+          </section>
+
+          <section id="oracle" class="content-block">
+            <h2>Pourquoi Oracle Database ?</h2>
+            <p>
+              Oracle Database a été choisi pour sa robustesse, sa fiabilité et sa forte présence
+              dans les environnements professionnels. Le SGBD offre des mécanismes avancés pour la gestion
+              des transactions, la cohérence des données, les accès concurrents et la sécurité. :contentReference[oaicite:14]{index=14}
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Points forts d’Oracle</h4>
+                <ul>
+                  <li>Gestion fine des transactions</li>
+                  <li>Contrôle des utilisateurs, rôles et privilèges</li>
+                  <li>Support natif de PL/SQL</li>
+                  <li>Cadre réaliste pour l’administration de BDD</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Environnement de travail</h4>
+                <ul>
+                  <li>Oracle Database</li>
+                  <li>Oracle SQL Developer</li>
+                  <li>Laravel comme couche applicative</li>
+                  <li>Interface web pour interagir avec la base</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="security" class="content-block">
+            <h2>Utilisateurs, rôles & privilèges</h2>
+            <p>
+              Une partie essentielle du projet consiste à organiser les accès à la base de données
+              à travers des <strong>utilisateurs distincts</strong>, des <strong>rôles</strong> et des
+              <strong>privilèges</strong>. Cette approche permet d’appliquer le principe du moindre privilège
+              et de protéger les informations sensibles. :contentReference[oaicite:15]{index=15}
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Organisation logique</h4>
+                <ul>
+                  <li>Création d’utilisateurs selon les profils métiers</li>
+                  <li>Définition de rôles pour centraliser les permissions</li>
+                  <li>Attribution contrôlée des privilèges système et objet</li>
+                  <li>Utilisation de vues pour limiter l’accès direct aux tables</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Exemples confirmés par le SQL</h4>
+                <ul>
+                  <li>Rôles présents : <code>ROLE_ADMIN</code>, <code>ROLE_AGENT</code></li>
+                  <li>Tables métier : <code>AGENT</code>, <code>CLIENT</code>, <code>ECHEANCE</code></li>
+                  <li>Privilèges SELECT / INSERT / UPDATE / DELETE gérés selon les rôles</li>
+                  <li>Contrôle d’accès appliqué au niveau base et application</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="project-note">
+              Le dump SQL montre explicitement les tables métier et des privilèges attribués à des rôles
+              comme <code>ROLE_ADMIN</code> et <code>ROLE_AGENT</code>. :contentReference[oaicite:16]{index=16}
+            </div>
+          </section>
+
+          <section id="plsql" class="content-block">
+            <h2>Programmation PL/SQL</h2>
+            <p>
+              Le projet s’appuie sur <strong>PL/SQL</strong> pour centraliser la logique métier directement
+              dans la base : procédures stockées, fonctions et triggers sont utilisés pour automatiser
+              des traitements, garantir la cohérence des données et réduire les erreurs humaines. :contentReference[oaicite:17]{index=17}
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Composants PL/SQL</h4>
+                <ul>
+                  <li>Procédures stockées</li>
+                  <li>Fonctions</li>
+                  <li>Triggers</li>
+                  <li>Gestion des exceptions</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Rôle dans le système</h4>
+                <ul>
+                  <li>Automatiser des contrôles métier</li>
+                  <li>Mettre à jour certains statuts automatiquement</li>
+                  <li>Encadrer la gestion des prêts et remboursements</li>
+                  <li>Renforcer intégrité et fiabilité globales</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="project-note">
+              Le rapport cite explicitement des exemples de calculs financiers, de procédures métier
+              et de triggers pour le contrôle et la mise à jour des données. :contentReference[oaicite:18]{index=18}
+            </div>
+          </section>
+
+          <section id="laravel" class="content-block">
+            <h2>Backend & Frontend Laravel</h2>
+            <p>
+              Laravel a été utilisé comme couche applicative afin de connecter l’interface web à Oracle Database,
+              en s’appuyant sur une architecture <strong>MVC</strong> qui structure clairement le code
+              entre modèles, vues et contrôleurs. :contentReference[oaicite:19]{index=19}
+            </p>
+
+            <div class="tech-list">
+              <span>Laravel</span>
+              <span>PHP</span>
+              <span>MVC</span>
+              <span>Oracle Database</span>
+              <span>Backend</span>
+              <span>Frontend</span>
+              <span>Procédures PL/SQL</span>
+            </div>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Backend</h4>
+                <ul>
+                  <li>Connexion Oracle ↔ Laravel</li>
+                  <li>Gestion des utilisateurs</li>
+                  <li>Contrôle d’accès côté applicatif</li>
+                  <li>Appel des procédures et fonctions PL/SQL</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Frontend</h4>
+                <ul>
+                  <li>Interfaces d’administration et d’agent</li>
+                  <li>Visualisation des données stockées dans Oracle</li>
+                  <li>Navigation simple et lisible</li>
+                  <li>Simulation d’un environnement applicatif réel</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="schema" class="content-block">
+            <h2>Structure des données</h2>
+            <p>
+              Le SQL fourni confirme une modélisation métier basée sur plusieurs tables centrales,
+              notamment <code>AGENT</code>, <code>CLIENT</code> et <code>ECHEANCE</code>, avec des colonnes
+              couvrant identité, coordonnées, dates, montants et statuts. :contentReference[oaicite:20]{index=20}
+            </p>
+
+            <div class="project-simple-grid-3">
+              <div>
+                <h4>AGENT</h4>
+                <p>Gestion des agents, identifiants, email, téléphone, login et mot de passe. :contentReference[oaicite:21]{index=21}</p>
+              </div>
+
+              <div>
+                <h4>CLIENT</h4>
+                <p>Informations client : identité, date de naissance, adresse, téléphone, email, type de client. :contentReference[oaicite:22]{index=22}</p>
+              </div>
+
+              <div>
+                <h4>ECHEANCE</h4>
+                <p>Suivi des échéances avec date, montant et statut, utilisé dans la gestion des prêts. :contentReference[oaicite:23]{index=23}</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="interfaces" class="content-block">
+            <h2>Figures & interfaces du rapport</h2>
+            <p>
+              Les figures réellement présentes dans le rapport sont les suivantes. Elles doivent être extraites
+              du PDF puis renommées avec les noms ci-dessous.
+            </p>
+
+            <div class="screens-grid">
+              <div class="screen-item">
+                <button type="button" onclick="openImage('figure1-1-oracle.png', 'Figure 1.1 – Oracle')">
+                  <img src="figure1-1-oracle.png" alt="Figure 1.1 – Oracle">
+                </button>
+                <div class="screen-caption">
+                  <h4>Figure 1.1 — Oracle</h4>
+                  <p>Illustration du choix d’Oracle Database comme base du système. :contentReference[oaicite:24]{index=24}</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <button type="button" onclick="openImage('figure4-1-laravel.png', 'Figure 4.1 – Laravel')">
+                  <img src="figure4-1-laravel.png" alt="Figure 4.1 – Laravel">
+                </button>
+                <div class="screen-caption">
+                  <h4>Figure 4.1 — Laravel</h4>
+                  <p>Présentation du framework utilisé pour la couche applicative. :contentReference[oaicite:25]{index=25}</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <button type="button" onclick="openImage('figure4-2-mvc-architecture.png', 'Figure 4.2 – MVC Architecture')">
+                  <img src="figure4-2-mvc-architecture.png" alt="Figure 4.2 – MVC Architecture">
+                </button>
+                <div class="screen-caption">
+                  <h4>Figure 4.2 — MVC Architecture</h4>
+                  <p>Architecture de l’application Laravel basée sur le modèle MVC. :contentReference[oaicite:26]{index=26}</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <button type="button" onclick="openImage('figure4-3-laravel-avec-oracle.png', 'Figure 4.3 – Laravel Avec Oracle')">
+                  <img src="figure4-3-laravel-avec-oracle.png" alt="Figure 4.3 – Laravel Avec Oracle">
+                </button>
+                <div class="screen-caption">
+                  <h4>Figure 4.3 — Laravel Avec Oracle</h4>
+                  <p>Connexion de l’application Laravel à Oracle Database. :contentReference[oaicite:27]{index=27}</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <button type="button" onclick="openImage('figure4-4-interface-admin.png', 'Figure 4.4 – Interface Admin')">
+                  <img src="figure4-4-interface-admin.png" alt="Figure 4.4 – Interface Admin">
+                </button>
+                <div class="screen-caption">
+                  <h4>Figure 4.4 — Interface Admin</h4>
+                  <p>Vue administrateur pour la gestion globale du système. :contentReference[oaicite:28]{index=28}</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <button type="button" onclick="openImage('figure4-5-interface-agent.png', 'Figure 4.5 – Interface Agent')">
+                  <img src="figure4-5-interface-agent.png" alt="Figure 4.5 – Interface Agent">
+                </button>
+                <div class="screen-caption">
+                  <h4>Figure 4.5 — Interface Agent</h4>
+                  <p>Vue agent pour les opérations courantes de microfinance. :contentReference[oaicite:29]{index=29}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="teamwork" class="content-block">
+            <h2>Travail d’équipe</h2>
+            <p>
+              Le rapport précise que le projet a été réalisé dans un cadre collaboratif par une équipe
+              de quatre membres, avec une répartition structurée des responsabilités autour de la conception
+              de la base, des utilisateurs / rôles / privilèges, des procédures et fonctions, ainsi que des triggers
+              et de la gestion des erreurs. :contentReference[oaicite:30]{index=30}
+            </p>
+
+            <div class="project-note">
+              Le document mentionne la répartition des tâches par axes techniques, mais le passage
+              fourni ne détaille pas entièrement quelle sous-partie a été attribuée à chaque membre.
+            </div>
+          </section>
+
+          <section id="portfolio-plus" class="content-block">
+            <h2>Ce que ce projet apporte à mon portfolio</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Compétences démontrées</h4>
+                <ul>
+                  <li>Administration de bases de données Oracle</li>
+                  <li>Gestion des rôles, utilisateurs et privilèges</li>
+                  <li>Programmation PL/SQL</li>
+                  <li>Conception d’un système de données sécurisé</li>
+                  <li>Intégration Oracle ↔ Laravel</li>
+                  <li>Architecture MVC</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Valeur professionnelle</h4>
+                <ul>
+                  <li>Projet structuré et documenté</li>
+                  <li>Cas d’usage financier sensible</li>
+                  <li>Bonne illustration sécurité + logique métier</li>
+                  <li>Vision complète base de données + application</li>
+                  <li>Travail collaboratif sur un système cohérent</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="quick-links">
+              <a class="btn btn-primary" href="../../index.html#projects">Retour aux projets</a>
+              <a class="btn btn-secondary" href="../../index.html#contact">Me contacter</a>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <footer class="footer project-footer">© 2026 — Rawane Cerbouche</footer>
+    </div>
+  </main>
+
+  <div id="imagePopup" class="image-popup" aria-hidden="true">
+    <div class="image-popup-content">
+      <button class="close-btn" type="button" aria-label="Fermer" onclick="closeImage()">&times;</button>
+      <img id="popupImg" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    function openImage(src, altText) {
+      const popup = document.getElementById('imagePopup');
+      const img = document.getElementById('popupImg');
+
+      img.src = src;
+      img.alt = altText || '';
+      popup.classList.add('is-open');
+      popup.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImage() {
+      const popup = document.getElementById('imagePopup');
+      const img = document.getElementById('popupImg');
+
+      popup.classList.remove('is-open');
+      popup.setAttribute('aria-hidden', 'true');
+      img.src = '';
+      img.alt = '';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('imagePopup').addEventListener('click', function (e) {
+      if (e.target === this) {
+        closeImage();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeImage();
+      }
+    });
+  </script>
+</body>
+</html>
