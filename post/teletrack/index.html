@@ -354,6 +354,38 @@
         grid-template-columns: 1fr;
       }
     }
+    .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* Style du bouton */
+.download-btn {
+    background-color: #4A90E2; /* bleu subtil */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Effet au survol */
+.download-btn:hover {
+    background-color: #357ABD;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Effet clic */
+.download-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
   </style>
 </head>
 
@@ -383,9 +415,11 @@
         <h1>TeleTrack</h1>
         <p class="project-subtitle">Application web de gestion du télétravail</p>
         <p class="project-team">Projet réalisé dans le cadre d’un stage chez <strong>PORTNET S.A.</strong></p>
-         <a href="RapportTeleTRack.pdf" download>
-  <button>Télécharger le rapport</button>
-</a>
+        <p></p>
+         <div class="button-container">
+    <a href="RapportTeleTRack.pdf" download class="download-btn">Télécharger le rapport</a>
+</div>
+        <p></p>
         <div class="project-tags">
           <span class="project-tag-chip">Java</span>
           <span class="project-tag-chip">Spring Boot</span>
