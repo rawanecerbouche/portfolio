@@ -9,434 +9,699 @@
     name="description"
     content="Projet Business Intelligence Power BI : ETL Python, data warehousing simplifié, schéma étoile, mesures DAX et dashboards interactifs pour l’analyse des ventes Carrefour."
   />
+
+  <style>
+    /* ===== Page Power BI : style spécifique ===== */
+    .project-page{
+      padding-top: 24px;
+      padding-bottom: 60px;
+    }
+
+    .project-shell{
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .project-hero{
+      text-align: center;
+      padding: 24px 0 34px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 34px;
+    }
+
+    .project-meta{
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .project-hero h1{
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      margin-bottom: 10px;
+      letter-spacing: -.03em;
+    }
+
+    .project-subtitle{
+      color: var(--accent-strong);
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .project-team{
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 18px;
+    }
+
+    .project-tags{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .project-tag-chip{
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: var(--accent-strong);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .project-intro{
+      max-width: 880px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.9;
+    }
+
+    .project-layout{
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .project-toc{
+      position: sticky;
+      top: 110px;
+      padding-right: 10px;
+    }
+
+    .project-toc h3{
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .project-toc-list{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 1px solid var(--line);
+      padding-left: 14px;
+    }
+
+    .project-toc-list a{
+      color: var(--muted);
+      font-size: .95rem;
+      transition: .2s ease;
+    }
+
+    .project-toc-list a:hover{
+      color: var(--text);
+      transform: translateX(3px);
+    }
+
+    .project-content{
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .content-block{
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .content-block:last-child{
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .content-block h2{
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      letter-spacing: -.02em;
+    }
+
+    .content-block h4{
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .content-block p{
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+
+    .content-block ul{
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .content-block li + li{
+      margin-top: 8px;
+    }
+
+    .project-simple-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .project-simple-grid-3{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .project-panel{
+      padding: 18px 0;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .project-panel:first-child{
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .project-note{
+      padding: 14px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,.025);
+      border-radius: 0 14px 14px 0;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .project-image-full{
+      margin-top: 18px;
+    }
+
+    .project-image-full img{
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .screens-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .screen-item{
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+
+    .screen-item img{
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .screen-caption{
+      padding: 14px 16px 16px;
+    }
+
+    .screen-caption h4{
+      margin-bottom: 6px;
+    }
+
+    .screen-caption p{
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .quick-links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .footer.project-footer{
+      margin-top: 40px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    @media (max-width: 980px){
+      .project-layout{
+        grid-template-columns: 1fr;
+      }
+
+      .project-toc{
+        position: relative;
+        top: auto;
+        padding-right: 0;
+      }
+
+      .project-toc-list{
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .project-simple-grid,
+      .project-simple-grid-3,
+      .screens-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="bg-glow"></div>
-
   <header class="header">
     <div class="container nav">
-      <a class="logo" href="../../index.html#portfolio">← Retour</a>
+      <a class="logo" href="../../index.html#projects">← Retour</a>
 
       <nav class="nav-links">
-        <a href="../../index.html#home">Home</a>
-        <a href="../../index.html#about">About</a>
-        <a href="../../index.html#portfolio" class="active">Portfolio</a>
+        <a href="../../index.html#home">Accueil</a>
+        <a href="../../index.html#about">Profil</a>
+        <a href="../../index.html#projects" class="active">Projets</a>
         <a href="../../index.html#contact">Contact</a>
       </nav>
-      <p class="card-date">
-Projet réalisé en binôme avec <strong>MOUNJI MALAK</strong>
-</p>
 
       <div class="nav-actions">
-        <a class="btn btn-primary" href="../../rawane.pdf" download>Download CV</a>
+        <a class="btn btn-primary" href="../../rawane.pdf" download>Télécharger CV</a>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="section" style="border-top:none;">
+  <main class="container project-page">
+    <div class="project-shell">
 
       <!-- HERO -->
-      <div class="section-head" style="text-align:center; margin-bottom: 22px;">
-        <h1 style="font-size:42px; margin-bottom:10px;">Carrefour Sales Analysis</h1>
-        <p style="font-size:20px; color: var(--muted); margin-bottom:16px;">
-          Business Intelligence Dashboard — Power BI
-        </p>
+      <section class="project-hero">
+        <p class="project-meta">Projet Business Intelligence</p>
+        <h1>Carrefour Sales Analysis</h1>
+        <p class="project-subtitle">Dashboard analytique Power BI</p>
+        <p class="project-team">Projet réalisé en binôme avec <strong>MOUNJI MALAK</strong></p>
 
-        <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-bottom:18px;">
-          <span class="btn btn-ghost">Power BI</span>
-          <span class="btn btn-ghost">Python</span>
-          <span class="btn btn-ghost">Pandas</span>
-          <span class="btn btn-ghost">DAX</span>
-          <span class="btn btn-ghost">ETL</span>
-          <span class="btn btn-ghost">Star Schema</span>
+        <div class="project-tags">
+          <span class="project-tag-chip">Power BI</span>
+          <span class="project-tag-chip">Python</span>
+          <span class="project-tag-chip">Pandas</span>
+          <span class="project-tag-chip">DAX</span>
+          <span class="project-tag-chip">ETL</span>
+          <span class="project-tag-chip">Star Schema</span>
         </div>
 
-        <p style="max-width:900px; margin:0 auto; color: var(--muted); line-height:1.8;">
-          Projet complet de <strong>Business Intelligence</strong> permettant de transformer des données brutes de ventes Carrefour en
-          <strong>insights analytiques</strong> grâce à un pipeline
-          <strong>ETL Python</strong>, une architecture inspirée du
+        <p class="project-intro">
+          Ce projet de <strong>Business Intelligence</strong> vise à transformer des données brutes de ventes Carrefour
+          en <strong>insights analytiques exploitables</strong> grâce à un pipeline
+          <strong>ETL Python</strong>, une structuration inspirée du
           <strong>data warehousing</strong>, un <strong>schéma étoile</strong> et des
           <strong>dashboards interactifs Power BI</strong>.
         </p>
-      </div>
+      </section>
 
-      <!-- TABLE DES MATIÈRES -->
-      <div class="card" style="margin-bottom:16px;">
-        <h3 style="margin-bottom:12px;">Table des matières</h3>
-        <div class="grid-2">
-          <a class="btn btn-ghost" href="#liens">01. Liens & livrables</a>
-          <a class="btn btn-ghost" href="#overview">02. Vue d’ensemble</a>
-          <a class="btn btn-ghost" href="#etl">03. ETL & préparation</a>
-          <a class="btn btn-ghost" href="#warehouse">04. Data Warehousing</a>
-          <a class="btn btn-ghost" href="#schema">05. Schéma étoile</a>
-          <a class="btn btn-ghost" href="#measures">06. Mesures DAX</a>
-          <a class="btn btn-ghost" href="#dashboards">07. Dashboards</a>
-          <a class="btn btn-ghost" href="#screenshots">08. Screenshots</a>
-          <a class="btn btn-ghost" href="#results">09. Résultats & insights</a>
-          <a class="btn btn-ghost" href="#cta">10. Accès rapide</a>
-        </div>
-      </div>
+      <div class="project-layout">
 
-      <!-- LIENS -->
-      <div id="liens" class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-          <h3 style="margin-bottom:10px;">Liens</h3>
-          <div style="display:flex; flex-wrap:wrap; gap:10px;">
-            <a class="btn btn-primary" href="https://github.com/mounjimallak-bit/Carrefour-Sales-Analysis-Power-BI-Project" target="_blank" rel="noopener noreferrer">
-              GitHub Repository
-            </a>
-            <a class="btn btn-ghost" href="./project_powerbi.pbit" download>
-              Télécharger le template Power BI
-            </a>
-            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1X8w2iwG33Yd4KUv2MXWcPAy2ngNGf-DJ/view" target="_blank" rel="noopener noreferrer">
-              Full Raw Dataset
-            </a>
-            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1939kxoTLac0OPcrJ3B8phA9asYU4_G3M/view" target="_blank" rel="noopener noreferrer">
-              Full Cleaned Dataset
-            </a>
-          </div>
-        </div>
+        <!-- TABLE DES MATIÈRES VERTICALE -->
+        <aside class="project-toc">
+          <h3>Sommaire</h3>
+          <nav class="project-toc-list">
+            <a href="#liens">01. Liens & livrables</a>
+            <a href="#overview">02. Vue d’ensemble</a>
+            <a href="#etl">03. ETL & préparation</a>
+            <a href="#warehouse">04. Data Warehousing</a>
+            <a href="#schema">05. Schéma étoile</a>
+            <a href="#measures">06. Mesures DAX</a>
+            <a href="#dashboards">07. Dashboards</a>
+            <a href="#screenshots">08. Screenshots</a>
+            <a href="#results">09. Résultats & insights</a>
+            <a href="#cta">10. Accès rapide</a>
+          </nav>
+        </aside>
 
-        <div class="card">
-          <h3 style="margin-bottom:10px;">Stack & composants</h3>
-          <ul>
-            <li><strong>ETL</strong> : Python + Pandas pour le nettoyage et la transformation</li>
-            <li><strong>Data Model</strong> : modèle analytique Power BI en schéma étoile</li>
-            <li><strong>BI</strong> : mesures DAX, KPIs, filtres, dashboards interactifs</li>
-            <li><strong>Fichiers</strong> : CSV bruts, dataset nettoyé, template Power BI</li>
-          </ul>
-        </div>
-      </div>
+        <!-- CONTENU -->
+        <div class="project-content">
 
-      <!-- OVERVIEW -->
-      <div id="overview" class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-          <h3>Objectif du projet</h3>
-          <ul>
-            <li>Analyser les ventes validées et annulées</li>
-            <li>Mesurer l’impact des remises sur le chiffre d’affaires</li>
-            <li>Comparer les performances par catégorie, ville et moyen de paiement</li>
-            <li>Suivre les tendances temporelles et les comportements clients</li>
-            <li>Centraliser les KPIs dans une solution BI claire et exploitable</li>
-          </ul>
-        </div>
+          <section id="liens" class="content-block">
+            <h2>Liens & livrables</h2>
 
-        <div class="card">
-          <h3>Pipeline analytique</h3>
-          <p class="section-text" style="max-width:none;">
-            Ce projet suit un workflow complet de Business Intelligence :
-          </p>
-
-          <div style="display:flex; flex-wrap:wrap; gap:10px; margin:12px 0;">
-            <span class="btn btn-ghost">Raw Data</span>
-            <span class="btn btn-ghost">ETL Python</span>
-            <span class="btn btn-ghost">Processed Data</span>
-            <span class="btn btn-ghost">Star Schema</span>
-            <span class="btn btn-ghost">DAX</span>
-            <span class="btn btn-ghost">Power BI Dashboard</span>
-          </div>
-
-          <p class="section-text" style="max-width:none;">
-            <strong>Raw Data → ETL → Clean Data → Star Schema → KPI Reporting</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- ETL -->
-      <div id="etl" class="card" style="margin-bottom:16px;">
-        <h3>ETL & préparation des données</h3>
-        <p class="section-text" style="max-width:none;">
-          Avant l’analyse dans Power BI, les données ont été préparées via un script ETL en Python afin de garantir leur cohérence,
-          leur lisibilité et leur exploitabilité.
-        </p>
-
-        <div class="grid-2" style="margin-top:12px;">
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Extract</h4>
-            <ul>
-              <li>Import du fichier CSV source contenant les transactions Carrefour</li>
-              <li>Chargement des colonnes de vente, client, paiement, date et catégorie</li>
-              <li>Gestion de l’encodage CSV pour éviter les erreurs de lecture</li>
-            </ul>
-          </div>
-
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Transform</h4>
-            <ul>
-              <li>Nettoyage des textes et standardisation des valeurs</li>
-              <li>Correction et conversion des dates</li>
-              <li>Suppression de colonnes inutiles</li>
-              <li>Normalisation des champs mois / année</li>
-              <li>Création d’un dataset prêt pour l’analyse Power BI</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- WAREHOUSING -->
-      <div id="warehouse" class="card" style="margin-bottom:16px;">
-        <h3>Data Warehousing (approche simplifiée)</h3>
-        <p class="section-text" style="max-width:none;">
-          Même sans entrepôt de données enterprise, le projet suit une logique inspirée du
-          <strong>data warehousing</strong> avec séparation claire des couches de données.
-        </p>
-
-        <div class="grid-3" style="margin-top:12px;">
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Raw Layer</h4>
-            <p>Données brutes d’origine, non modifiées, servant de base au pipeline ETL.</p>
-          </div>
-
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Processed Layer</h4>
-            <p>Dataset nettoyé, structuré et prêt à alimenter le modèle analytique.</p>
-          </div>
-
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Reporting Layer</h4>
-            <p>Couche BI construite dans Power BI avec KPIs, visuels et exploration interactive.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- STAR SCHEMA -->
-      <div id="schema" class="card" style="margin-bottom:16px;">
-        <h3>Schéma étoile</h3>
-        <p class="section-text" style="max-width:none;">
-          Le modèle de données a été structuré en <strong>schéma étoile</strong> pour améliorer la performance analytique,
-          simplifier les relations et faciliter les calculs DAX.
-        </p>
-
-        <div class="grid-2" style="margin-top:12px;">
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Table de faits</h4>
-            <ul>
-              <li><code>Fact_Sales</code> : ventes, quantités, remises, commandes, profils clients</li>
-            </ul>
-
-            <h4 style="margin:14px 0 8px;">Tables de dimensions</h4>
-            <ul>
-              <li><code>Dim_Date</code></li>
-              <li><code>Dim_Produit</code></li>
-              <li><code>dim_client</code></li>
-              <li><code>Dim_Geography</code></li>
-              <li><code>Dim_payment</code></li>
-              <li><code>Dim_status</code></li>
-              <li><code>Dim_refund</code></li>
-            </ul>
-          </div>
-
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Avantages du modèle</h4>
-            <ul>
-              <li>Relations plus claires</li>
-              <li>Calculs DAX plus simples</li>
-              <li>Navigation analytique plus flexible</li>
-              <li>Meilleure lisibilité du modèle</li>
-              <li>Structure standard en BI / data warehouse</li>
-            </ul>
-          </div>
-        </div>
-
-        <div style="margin-top:14px;">
-          <img
-            src="etoile.png"
-            alt="Schéma étoile Power BI"
-            style="width:100%; border-radius:14px; display:block;"
-          />
-        </div>
-      </div>
-
-      <!-- MEASURES -->
-      <div id="measures" class="card" style="margin-bottom:16px;">
-        <h3>Mesures DAX & KPIs</h3>
-        <p class="section-text" style="max-width:none;">
-          Plusieurs mesures DAX ont été créées pour transformer les données transactionnelles en indicateurs business directement exploitables.
-        </p>
-
-        <div class="grid-2" style="margin-top:12px;">
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">KPIs principaux</h4>
-            <ul>
-              <li><code>Total Sales (Valid)</code></li>
-              <li><code>Total Orders</code></li>
-              <li><code>Total Qty</code></li>
-              <li><code>Total Discount</code></li>
-              <li><code>CA_Validé</code></li>
-              <li><code>CA_Annulé</code></li>
-              <li><code>Taux_Annulation %</code></li>
-              <li><code>Taux_discount_Global</code></li>
-            </ul>
-          </div>
-
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Analyses avancées</h4>
-            <ul>
-              <li><code>CA_MoM_Prev</code></li>
-              <li><code>CA_PY</code></li>
-              <li><code>CA_YTD</code></li>
-              <li><code>Croissance_CA_YoY %</code></li>
-              <li><code>Articles_par_Panier</code></li>
-              <li><code>Taux_Discount_Moyen</code></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- DASHBOARDS -->
-      <div id="dashboards" class="card" style="margin-bottom:16px;">
-        <h3>Dashboards développés</h3>
-        <p class="section-text" style="max-width:none;">
-          Le projet a été structuré en plusieurs vues analytiques afin de couvrir différentes dimensions métier : ventes, remises,
-          annulations, paiements, géographie, comportement client et tendance temporelle.
-        </p>
-
-        <div class="grid-2" style="margin-top:12px;">
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Vues principales</h4>
-            <ul>
-              <li>Sales Dashboard</li>
-              <li>Transaction Details</li>
-              <li>Discounts & Promotions</li>
-              <li>Cancellations & Refunds</li>
-              <li>Payment Analysis</li>
-            </ul>
-          </div>
-
-          <div class="card" style="margin:0;">
-            <h4 style="margin-bottom:8px;">Vues complémentaires</h4>
-            <ul>
-              <li>Geography Analysis</li>
-              <li>Customer Insights</li>
-              <li>Times Dashboard</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- SCREENSHOTS -->
-      <div id="screenshots" class="card" style="margin-bottom:16px;">
-        <h3>Screenshots</h3>
-        <p class="section-text" style="max-width:none;">
-          Aperçu des principales pages du dashboard Power BI.
-        </p>
-
-        <div class="projects" style="grid-template-columns:1fr 1fr; margin-top:12px;">
-          <div class="project-card" style="pointer-events:none;">
-            <img src="sales_dashboard.png" alt="Sales Dashboard" />
-            <div class="project-body">
-              <h3>Sales Dashboard</h3>
-              <p>Vue synthétique des ventes, quantités, catégories et remises.</p>
+            <div class="quick-links">
+              <a class="btn btn-primary" href="https://github.com/mounjimallak-bit/Carrefour-Sales-Analysis-Power-BI-Project" target="_blank" rel="noopener noreferrer">
+                GitHub Repository
+              </a>
+              <a class="btn btn-secondary" href="./project_powerbi.pbit" download>
+                Télécharger le template Power BI
+              </a>
+              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1X8w2iwG33Yd4KUv2MXWcPAy2ngNGf-DJ/view" target="_blank" rel="noopener noreferrer">
+                Full Raw Dataset
+              </a>
+              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1939kxoTLac0OPcrJ3B8phA9asYU4_G3M/view" target="_blank" rel="noopener noreferrer">
+                Full Cleaned Dataset
+              </a>
             </div>
-          </div>
 
-          <div class="project-card" style="pointer-events:none;">
-            <img src="transaction details.png" alt="Transaction Details" />
-            <div class="project-body">
-              <h3>Transaction Details</h3>
-              <p>Détail transactionnel avec filtres, commandes et profils clients.</p>
-            </div>
-          </div>
+            <div class="project-simple-grid">
+              <div class="project-panel">
+                <h4>Stack technique</h4>
+                <ul>
+                  <li><strong>ETL</strong> : Python + Pandas pour le nettoyage et la transformation</li>
+                  <li><strong>Data Model</strong> : modèle analytique Power BI en schéma étoile</li>
+                  <li><strong>BI</strong> : mesures DAX, KPIs, filtres, dashboards interactifs</li>
+                </ul>
+              </div>
 
-          <div class="project-card" style="pointer-events:none;">
-            <img src="discount and promotions.png" alt="Discounts and Promotions" />
-            <div class="project-body">
-              <h3>Discounts & Promotions</h3>
-              <p>Analyse des remises par catégorie, paiement et évolution temporelle.</p>
+              <div class="project-panel">
+                <h4>Livrables</h4>
+                <ul>
+                  <li>Jeu de données brut</li>
+                  <li>Dataset nettoyé</li>
+                  <li>Template Power BI</li>
+                  <li>Dashboard analytique final</li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </section>
 
-          <div class="project-card" style="pointer-events:none;">
-            <img src="cencellation.png" alt="Cancellations and Refunds" />
-            <div class="project-body">
-              <h3>Cancellations & Refunds</h3>
-              <p>Suivi des annulations, causes dominantes et impact business.</p>
-            </div>
-          </div>
+          <section id="overview" class="content-block">
+            <h2>Vue d’ensemble</h2>
 
-          <div class="project-card" style="pointer-events:none;">
-            <img src="payment analysis.png" alt="Payment Analysis" />
-            <div class="project-body">
-              <h3>Payment Analysis</h3>
-              <p>Comparaison des moyens de paiement, commandes et taux d’annulation.</p>
-            </div>
-          </div>
+            <div class="project-simple-grid">
+              <div>
+                <h4>Objectif du projet</h4>
+                <ul>
+                  <li>Analyser les ventes validées et annulées</li>
+                  <li>Mesurer l’impact des remises sur le chiffre d’affaires</li>
+                  <li>Comparer les performances par catégorie, ville et moyen de paiement</li>
+                  <li>Suivre les tendances temporelles et les comportements clients</li>
+                  <li>Centraliser les KPIs dans une solution BI claire et exploitable</li>
+                </ul>
+              </div>
 
-          <div class="project-card" style="pointer-events:none;">
-            <img src="geography analysis.png" alt="Geography Analysis" />
-            <div class="project-body">
-              <h3>Geography Analysis</h3>
-              <p>Analyse des performances commerciales par ville et zone.</p>
+              <div>
+                <h4>Pipeline analytique</h4>
+                <p>
+                  Le projet suit un workflow complet de Business Intelligence :
+                </p>
+                <div class="project-note">
+                  <strong>Raw Data → ETL Python → Clean Data → Star Schema → DAX → Dashboard Power BI</strong>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
 
-          <div class="project-card" style="pointer-events:none;">
-            <img src="customer insights.png" alt="Customer Insights" />
-            <div class="project-body">
-              <h3>Customer Insights</h3>
-              <p>Segmentation clients par genre, tranche d’âge et volume d’achats.</p>
-            </div>
-          </div>
+          <section id="etl" class="content-block">
+            <h2>ETL & préparation des données</h2>
+            <p>
+              Avant l’analyse dans Power BI, les données ont été préparées via un script ETL en Python afin de garantir leur cohérence,
+              leur lisibilité et leur exploitabilité.
+            </p>
 
-          <div class="project-card" style="pointer-events:none;">
-            <img src="2.png" alt="Times Dashboard" />
-            <div class="project-body">
-              <h3>Times Dashboard</h3>
-              <p>Tendances temporelles, croissance, cumul annuel et évolution mensuelle.</p>
+            <div class="project-simple-grid">
+              <div>
+                <h4>Extract</h4>
+                <ul>
+                  <li>Import du fichier CSV source contenant les transactions Carrefour</li>
+                  <li>Chargement des colonnes de vente, client, paiement, date et catégorie</li>
+                  <li>Gestion de l’encodage CSV pour éviter les erreurs de lecture</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Transform</h4>
+                <ul>
+                  <li>Nettoyage des textes et standardisation des valeurs</li>
+                  <li>Correction et conversion des dates</li>
+                  <li>Suppression de colonnes inutiles</li>
+                  <li>Normalisation des champs mois / année</li>
+                  <li>Création d’un dataset prêt pour l’analyse Power BI</li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </section>
+
+          <section id="warehouse" class="content-block">
+            <h2>Data Warehousing</h2>
+            <p>
+              Même sans entrepôt de données enterprise, le projet suit une logique inspirée du
+              <strong>data warehousing</strong> avec séparation claire des couches de données.
+            </p>
+
+            <div class="project-simple-grid-3">
+              <div>
+                <h4>Raw Layer</h4>
+                <p>Données brutes d’origine, non modifiées, servant de base au pipeline ETL.</p>
+              </div>
+
+              <div>
+                <h4>Processed Layer</h4>
+                <p>Dataset nettoyé, structuré et prêt à alimenter le modèle analytique.</p>
+              </div>
+
+              <div>
+                <h4>Reporting Layer</h4>
+                <p>Couche BI construite dans Power BI avec KPIs, visuels et exploration interactive.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="schema" class="content-block">
+            <h2>Schéma étoile</h2>
+            <p>
+              Le modèle de données a été structuré en <strong>schéma étoile</strong> pour améliorer la performance analytique,
+              simplifier les relations et faciliter les calculs DAX.
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Table de faits</h4>
+                <ul>
+                  <li><code>Fact_Sales</code> : ventes, quantités, remises, commandes, profils clients</li>
+                </ul>
+
+                <h4 style="margin-top:18px;">Tables de dimensions</h4>
+                <ul>
+                  <li><code>Dim_Date</code></li>
+                  <li><code>Dim_Produit</code></li>
+                  <li><code>dim_client</code></li>
+                  <li><code>Dim_Geography</code></li>
+                  <li><code>Dim_payment</code></li>
+                  <li><code>Dim_status</code></li>
+                  <li><code>Dim_refund</code></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Avantages du modèle</h4>
+                <ul>
+                  <li>Relations plus claires</li>
+                  <li>Calculs DAX plus simples</li>
+                  <li>Navigation analytique plus flexible</li>
+                  <li>Meilleure lisibilité du modèle</li>
+                  <li>Structure standard en BI / data warehouse</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="project-image-full">
+              <img src="etoile.png" alt="Schéma étoile Power BI" />
+            </div>
+          </section>
+
+          <section id="measures" class="content-block">
+            <h2>Mesures DAX & KPIs</h2>
+            <p>
+              Plusieurs mesures DAX ont été créées pour transformer les données transactionnelles en indicateurs business directement exploitables.
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>KPIs principaux</h4>
+                <ul>
+                  <li><code>Total Sales (Valid)</code></li>
+                  <li><code>Total Orders</code></li>
+                  <li><code>Total Qty</code></li>
+                  <li><code>Total Discount</code></li>
+                  <li><code>CA_Validé</code></li>
+                  <li><code>CA_Annulé</code></li>
+                  <li><code>Taux_Annulation %</code></li>
+                  <li><code>Taux_discount_Global</code></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Analyses avancées</h4>
+                <ul>
+                  <li><code>CA_MoM_Prev</code></li>
+                  <li><code>CA_PY</code></li>
+                  <li><code>CA_YTD</code></li>
+                  <li><code>Croissance_CA_YoY %</code></li>
+                  <li><code>Articles_par_Panier</code></li>
+                  <li><code>Taux_Discount_Moyen</code></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="dashboards" class="content-block">
+            <h2>Dashboards développés</h2>
+            <p>
+              Le projet a été structuré en plusieurs vues analytiques afin de couvrir différentes dimensions métier :
+              ventes, remises, annulations, paiements, géographie, comportement client et tendance temporelle.
+            </p>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Vues principales</h4>
+                <ul>
+                  <li>Sales Dashboard</li>
+                  <li>Transaction Details</li>
+                  <li>Discounts & Promotions</li>
+                  <li>Cancellations & Refunds</li>
+                  <li>Payment Analysis</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Vues complémentaires</h4>
+                <ul>
+                  <li>Geography Analysis</li>
+                  <li>Customer Insights</li>
+                  <li>Times Dashboard</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="screenshots" class="content-block">
+            <h2>Screenshots</h2>
+            <p>Aperçu des principales pages du dashboard Power BI.</p>
+
+            <div class="screens-grid">
+              <div class="screen-item">
+                <img src="sales_dashboard.png" alt="Sales Dashboard" />
+                <div class="screen-caption">
+                  <h4>Sales Dashboard</h4>
+                  <p>Vue synthétique des ventes, quantités, catégories et remises.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="transaction details.png" alt="Transaction Details" />
+                <div class="screen-caption">
+                  <h4>Transaction Details</h4>
+                  <p>Détail transactionnel avec filtres, commandes et profils clients.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="discount and promotions.png" alt="Discounts and Promotions" />
+                <div class="screen-caption">
+                  <h4>Discounts & Promotions</h4>
+                  <p>Analyse des remises par catégorie, paiement et évolution temporelle.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="cencellation.png" alt="Cancellations and Refunds" />
+                <div class="screen-caption">
+                  <h4>Cancellations & Refunds</h4>
+                  <p>Suivi des annulations, causes dominantes et impact business.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="payment analysis.png" alt="Payment Analysis" />
+                <div class="screen-caption">
+                  <h4>Payment Analysis</h4>
+                  <p>Comparaison des moyens de paiement, commandes et taux d’annulation.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="geography analysis.png" alt="Geography Analysis" />
+                <div class="screen-caption">
+                  <h4>Geography Analysis</h4>
+                  <p>Analyse des performances commerciales par ville et zone.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="customer insights.png" alt="Customer Insights" />
+                <div class="screen-caption">
+                  <h4>Customer Insights</h4>
+                  <p>Segmentation clients par genre, tranche d’âge et volume d’achats.</p>
+                </div>
+              </div>
+
+              <div class="screen-item">
+                <img src="2.png" alt="Times Dashboard" />
+                <div class="screen-caption">
+                  <h4>Times Dashboard</h4>
+                  <p>Tendances temporelles, croissance, cumul annuel et évolution mensuelle.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="results" class="content-block">
+            <h2>Résultats & insights</h2>
+
+            <div class="project-simple-grid">
+              <div>
+                <h4>Résultats</h4>
+                <ul>
+                  <li>Vision centralisée des ventes, remises, annulations et commandes</li>
+                  <li>Comparaison claire des performances par catégorie</li>
+                  <li>Analyse des moyens de paiement et de leur comportement</li>
+                  <li>Suivi des tendances temporelles et des variations mensuelles</li>
+                  <li>Lecture rapide des KPIs grâce aux indicateurs DAX</li>
+                  <li>Modèle BI structuré et scalable pour futures extensions</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Insights clés</h4>
+                <ul>
+                  <li>Identification des catégories les plus performantes</li>
+                  <li>Mesure de l’impact des remises sur le chiffre d’affaires</li>
+                  <li>Détection des villes les plus contributrices</li>
+                  <li>Analyse des motifs d’annulation dominants</li>
+                  <li>Segmentation clients selon genre, âge et panier</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="cta" class="content-block">
+            <h2>Accès rapide</h2>
+            <div class="quick-links">
+              <a class="btn btn-primary" href="https://github.com/mounjimallak-bit/Carrefour-Sales-Analysis-Power-BI-Project" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1X8w2iwG33Yd4KUv2MXWcPAy2ngNGf-DJ/view" target="_blank" rel="noopener noreferrer">
+                Full Raw Data
+              </a>
+              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1939kxoTLac0OPcrJ3B8phA9asYU4_G3M/view" target="_blank" rel="noopener noreferrer">
+                Full Cleaned Data
+              </a>
+              <a class="btn btn-secondary" href="../../index.html#contact">
+                Contact
+              </a>
+            </div>
+          </section>
+
         </div>
       </div>
 
-      <!-- RESULTS -->
-      <div id="results" class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-          <h3>Résultats</h3>
-          <ul>
-            <li>Vision centralisée des ventes, remises, annulations et commandes</li>
-            <li>Comparaison claire des performances par catégorie</li>
-            <li>Analyse des moyens de paiement et de leur comportement</li>
-            <li>Suivi des tendances temporelles et des variations mensuelles</li>
-            <li>Lecture rapide des KPIs grâce aux cartes et indicateurs DAX</li>
-            <li>Modèle BI structuré et scalable pour futures extensions</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Insights clés</h3>
-          <ul>
-            <li>Identification des catégories les plus performantes</li>
-            <li>Mesure de l’impact des remises sur le chiffre d’affaires</li>
-            <li>Détection des villes les plus contributrices</li>
-            <li>Analyse des motifs d’annulation dominants</li>
-            <li>Segmentation clients selon genre, âge et panier</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div id="cta" class="card">
-        <h3 style="margin-bottom:12px;">Accès rapide</h3>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="https://github.com/mounjimallak-bit/Carrefour-Sales-Analysis-Power-BI-Project" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1X8w2iwG33Yd4KUv2MXWcPAy2ngNGf-DJ/view" target="_blank" rel="noopener noreferrer">
-            Full Raw Data
-          </a>
-          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1939kxoTLac0OPcrJ3B8phA9asYU4_G3M/view" target="_blank" rel="noopener noreferrer">
-            Full Cleaned Data
-          </a>
-          <a class="btn btn-ghost" href="../../index.html#contact">
-            Contact
-          </a>
-        </div>
-      </div>
-
-      <footer class="footer">© 2026 — Malak Mounji</footer>
-    </section>
+      <footer class="footer project-footer">© 2026 — Rawane Cerbouche</footer>
+    </div>
   </main>
 </body>
 </html>
